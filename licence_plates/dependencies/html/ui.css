@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Georama:wght@400;700&display=swap');
+
+* {
+    font-family: "Georama", sans-serif;
+    --bg-color: #181B20DD;
+    --text-color: white;
+    --accent-color: #6770DADD;
+    --warning-color: #fec106;
+    --danger-color: #dd3544;
+    user-select: none;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    right: 0;
+    position: absolute;
+}
+
+.notification {
+    width: 250px;
+    transform: translateX(100%);
+    display: flex;
+    background: linear-gradient(to right, var(--bg-color), 100%, #00000000);
+    border-radius: 5px;
+    margin: 5px;
+    padding: 2px;
+    border-left: 5px solid var(--accent-color);
+
+    animation: slide-in 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+}
+
+.notification.--warn {
+    border-left: 5px solid var(--warning-color);
+}
+
+.notification.--error {
+    border-left: 5px solid var(--danger-color);
+    border-bottom: 5px solid var(--danger-color);
+}
+
+.notification.slide-out {
+    animation: slide-out 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+}
+
+.icon-container {
+    display: grid;
+    align-content: center;
+}
+
+.icon {
+    padding: 5px;
+    font-size: 25px;
+    color: var(--accent-color);
+}
+
+.notification.--warn * .icon::before {
+    color: var(--warning-color);
+}
+
+.notification.--error * .icon::before {
+    color: var(--danger-color);
+}
+
+.image {
+    padding: 5px;
+    width: 27px;
+    height: 27px;
+}
+
+.body {
+    word-wrap: normal;
+    color: var(--text-color);
+}
+
+.body > h1 {
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+}
+
+@keyframes slide-in {
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(110%);
+    }
+}
